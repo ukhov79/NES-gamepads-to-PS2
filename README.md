@@ -2,7 +2,7 @@
 Connecting 8-bit NES gamepads to retrocomputer emulators or old PC via the PS2 interface
 
 ## Motivation
-There are a number of good old ZX Spectrum emulator projects on the network, for example: Sizif XXS. In addition, some older computers and laptops contain a PS/2 slot, but do not have the ability to connect a gamepad. The available solutions that I managed to find are either sold for money, or do not work. Therefore, it was decided to make a simple and cheap device for connecting two PS/2 gamepads and a keyboard to one input of the PS/2 retro computer.
+There are a number of good old ZX Spectrum emulator projects on the network, for example: **[Sizif XXS](https://github.com/UzixLS/zx-sizif-xxs)**. In addition, some older computers and laptops contain a PS/2 slot, but do not have the ability to connect a gamepad. The available solutions that I managed to find are either sold for money, or do not work. Therefore, it was decided to make a simple and cheap device for connecting two gamepads and PS/2 keyboard to one input of the PS/2 retro computer.
 
 ## References
 ### Ideas
