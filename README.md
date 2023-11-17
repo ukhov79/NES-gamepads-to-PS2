@@ -20,10 +20,11 @@ To print parts from PLA plastic, you will need an FDM 3D printer. All models are
 
 ## TODO list
 - [X] Create TODO list
-- [ ] 3D Case model for Sizif XXS
-- [ ] Collect needed components and write description
+- [X] 3D Case model for Sizif XXS
+- [X] Collect needed components and write description
+- [ ] Buy all components to refine models
 - [ ] Create Wire Diagram
-- [ ] Rebuild Case model for Sizif XXS
+- [ ] Rebuild Case model for Sizif XXS and all components
 - [ ] Code MVP with hardcoded keys
 - [ ] Test for two NES Gamepads
 - [ ] Add Configuration using NumLock key
