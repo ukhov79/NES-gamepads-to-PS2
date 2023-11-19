@@ -49,3 +49,5 @@ Case for Sizif XXS RevB looks like here (waiting for Slot Connector Socket for S
 ### Arduino Projects
 - NES Controller Interface with an Arduino UNO - Projects [`Page`](https://www.allaboutcircuits.com/projects/nes-controller-interface-with-an-arduino-uno/)
 - Arduino ps2dev library [`code`](https://github.com/Harvie/ps2dev)
+- nes_gamepad_adapter [`code`](https://github.com/Kokorev92/nes_gamepad_adapter/tree/master)
+- PS/2 Arduino Keyboard [`code`](https://www.pjrc.com/teensy/td_libs_PS2Keyboard.html)
