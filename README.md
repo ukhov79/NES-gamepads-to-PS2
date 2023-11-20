@@ -34,10 +34,11 @@ Case for Sizif XXS RevB looks like here (waiting for Slot Connector Socket for S
 - [ ] Buy all components to refine models
 - [ ] Create Wire Diagram
 - [ ] Rebuild Case model for Sizif XXS and all components
+- [ ] Code and test Keyboard repiter
 - [ ] Code MVP with hardcoded keys
 - [ ] Assemble the device
 - [ ] Test for two NES Gamepads
-- [ ] Add Configuration using NumLock key
+- [ ] Add Configuration using NumLock key and EEPROM
 - [ ] Create Video Guide
 - [ ] Enjoy local multiplayer Games on Sizif XXS
 
