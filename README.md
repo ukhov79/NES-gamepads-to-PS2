@@ -27,12 +27,31 @@ To print parts from PLA plastic, you will need an FDM 3D printer. All models are
 Case for Sizif XXS RevB looks like here (waiting for Slot Connector Socket for Sega to finish design):\
 <img src="images/CaseForSizifXXS.png" alt="PS/2 slot" height="300"/>
 
+## Wire Diagram
+<img src="images/Wire-diagram.jpg" alt="PS/2 slot" height="400"/>
+
+Gamepads Arduino pins:
+- PULT1_DATA_PIN 17
+- PULT1_LATCH_PIN 16
+- PULT1_CLOCK_PIN 15
+- PULT2_DATA_PIN 6
+- PULT2_LATCH_PIN 7
+- PULT2_CLOCK_PIN 8
+
+Emulator Arduino pins to connect into retro PC
+- SIZIF_KEYBOARD_DATA_PIN 2
+- SIZIF_KEYBOARD_CLOCK_PIN 3
+
+PS2 Keyboard Arduino pins to connect into Keyboard
+- PS2_KEYBOARD_DATA_PIN 4
+- PS2_KEYBOARD_CLOCK_PIN 5
+
 ## TODO list
 - [X] Create TODO list
 - [X] 3D Case model for Sizif XXS
 - [X] Collect needed components and write description
 - [ ] Buy all components to refine models
-- [ ] Create Wire Diagram
+- [X] Create Wire Diagram
 - [ ] Rebuild Case model for Sizif XXS and all components
 - [ ] Code and test Keyboard repiter
 - [ ] Code MVP with hardcoded keys
