@@ -28,7 +28,7 @@ Case for Sizif XXS RevB looks like here (waiting for Slot Connector Socket for S
 <img src="images/CaseForSizifXXS.png" alt="PS/2 slot" height="300"/>
 
 ## Wire Diagram
-<img src="images/Wire-diagram.jpg" alt="PS/2 slot" height="400"/>
+<img src="images/Wire-diagram.jpg" alt="Wire diagram" height="400"/>
 
 Gamepads Arduino pins:
 - PULT1_DATA_PIN 17
@@ -45,6 +45,10 @@ Emulator Arduino pins to connect into retro PC
 PS2 Keyboard Arduino pins to connect into Keyboard
 - PS2_KEYBOARD_DATA_PIN 4
 - PS2_KEYBOARD_CLOCK_PIN 5
+
+For other NES sockets:
+
+<img src="images/Gamepad-pinout.png" alt="Gamepad pinout" height="200"/>
 
 ## TODO list
 - [X] Create TODO list
