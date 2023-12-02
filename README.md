@@ -11,7 +11,7 @@ Retro PC emulator:
 - Sizif XXS RevB as emulator (optional - all 3D models were designed for it) ([`Image1`](/images/sizif-xxs-revB.jpg))
 - PS/2 Keyboard
 - Video Cable (Jack 3.5: 1-AudioLeft, 2-AudioRight, 3-GND, 4-Video)
-- 2 NES Gamepads ;)
+- 2 NES Gamepads from Sega 9pin ;)
 
 The following purchased components will be needed to assemble the device:
 - Arduino Nano V3.0 CH340 USB TYPE-C ([`Image1`](/images/Arduino-Nano-V3_0-CH340-USB_TYPE-C.png))
