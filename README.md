@@ -54,8 +54,9 @@ For other NES sockets:
 - [X] Create TODO list
 - [X] 3D Case model for Sizif XXS
 - [X] Collect needed components and write description
-- [ ] Buy all components to refine models
+- [X] Buy all components to refine models
 - [X] Create Wire Diagram
+- [ ] 3D Printing and Assembly Test
 - [ ] Rebuild Case model for Sizif XXS and all components
 - [ ] Code and test Keyboard repiter
 - [ ] Code MVP with hardcoded keys
