@@ -56,11 +56,11 @@ For other NES sockets:
 - [X] Collect needed components and write description
 - [X] Buy all components to refine models
 - [X] Create Wire Diagram
-- [ ] 3D Printing and Assembly Test
-- [ ] Final Rebuild Case model for Sizif XXS and all components
+- [X] 3D Printing and Assembly Test
+- [X] Final Rebuild Case model for Sizif XXS and all components
+- [ ] Assemble the device
 - [ ] Code and test Keyboard repiter
 - [ ] Code MVP with hardcoded keys
-- [ ] Assemble the device
 - [ ] Test for two NES Gamepads
 - [ ] Add Configuration using NumLock key and EEPROM
 - [ ] Create Video Guide
