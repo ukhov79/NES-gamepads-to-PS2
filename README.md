@@ -24,7 +24,7 @@ For 3D modeling, I used SolidWorks. All models can be found in the 3D models dir
 After assembling and testing the device I will complete the stl files for printing.\
 To print parts from PLA plastic, you will need an FDM 3D printer. All models are optimized for 0.4mm nozzle and 0.2mm layer thickness.
 
-Case for Sizif XXS RevB looks like here (waiting for Slot Connector Socket for Sega to finish design):\
+Case for Sizif XXS RevB looks like here:\
 <img src="images/CaseForSizifXXS.png" alt="PS/2 slot" height="300"/>
 
 ## Wire Diagram
