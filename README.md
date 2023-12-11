@@ -39,16 +39,40 @@ Gamepads Arduino pins:
 - PULT2_CLOCK_PIN 8
 
 Emulator Arduino pins to connect into retro PC
-- SIZIF_KEYBOARD_DATA_PIN 2
+- SIZIF_KEYBOARD_DATA_PIN 5
 - SIZIF_KEYBOARD_CLOCK_PIN 3
 
 PS2 Keyboard Arduino pins to connect into Keyboard
 - PS2_KEYBOARD_DATA_PIN 4
-- PS2_KEYBOARD_CLOCK_PIN 5
+- PS2_KEYBOARD_CLOCK_PIN 2
 
 For other NES sockets:
 
 <img src="images/Gamepad-pinout.png" alt="Gamepad pinout" height="200"/>
+
+## Assembly instructions
+First assemble the cover with the NES connectors:
+
+<img src="images/Step1.png" alt="Step1" width="300"/>
+
+Attach Sizif XXS to the case. Solder connector and resistor to the power button:
+
+<img src="images/Step2.png" alt="Step2" width="300"/>
+
+Solder the wires to the NES connectors, Sizif XXS board connector and PS/2 keyboard connector:
+
+<img src="images/Step3.png" alt="Step3" width="300"/>
+
+Connect all connectors and close the device case:
+
+<img src="images/Step4.png" alt="Step4" width="300"/>
+
+During debugging, this bug appeared on one SizifXXS board:
+
+<img src="images/Power-bug1.gif" alt="Gif bug" width="300"/>
+
+The issue is most likely caused by an unstable power supply.
+A capacitor with a larger capacity is installed on the second board and there was no problem.
 
 ## TODO list
 - [X] Create TODO list
@@ -58,7 +82,8 @@ For other NES sockets:
 - [X] Create Wire Diagram
 - [X] 3D Printing and Assembly Test
 - [X] Final Rebuild Case model for Sizif XXS and all components
-- [ ] Assemble the device
+- [X] Assemble the device
+- [X] Write about power bug
 - [ ] Code and test Keyboard repiter
 - [ ] Code MVP with hardcoded keys
 - [ ] Test for two NES Gamepads
