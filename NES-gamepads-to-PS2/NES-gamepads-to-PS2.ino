@@ -97,12 +97,13 @@ int get_keys_state_joystick(pult_cfg& cfg) {
 }
 
 // The order of shifting for the buttons:
-// 0 - A, 1 - B, 2 - Select, 3 - Start, 4 - Up, 5 - Down, 6 - Left, 7 - Right   
-// Codes for 
-byte keys_pult_1_c[] = {0x70, 0x43, 0x29, 0x5A, 0x75, 0x72, 0x6B, 0x74};
-// {'a', 'b', 'c', 'd', 'e', 's', 'd', 'f'};
-byte keys_pult_2_c[] = {0x70, 0x43, 0x29, 0x5A, 0x75, 0x72, 0x6B, 0x74};
-// {'k', 'h', 'j', 'u', 'y', 'i', 'n', 'm'};
+// 0 - Right, 1 - Left, 2 - Down, 3 - Up, 4 - Start, 5 - Select, 6 - B, 7 - A
+
+// Codes for keyboard Joystick
+byte keys_pult_1_c[] = {0x4D, 0x44, 0x1C, 0x15, 0x5A, 0x29, 0x43, 0x29};
+// Sizif Joystick
+byte keys_pult_2_c[] = {0x74, 0x6B, 0x72, 0x75, 0x5A, 0x29, 0x43, 0x70,};
+
 // TODO: Read from EEPROM, will be configured, change keycodes
 
 //===============================================================================
@@ -220,8 +221,9 @@ void setup() {
   PS2keyboard.begin(PS2_KEYBOARD_DATA_PIN, PS2_KEYBOARD_CLOCK_PIN);
   delay(10);
 
-  // init_joystick(pult_1);
-  // init_joystick(pult_2);
+  // init Gamepads
+  init_joystick(pult_1);
+  init_joystick(pult_2);
 
   // To write debug info
   Serial.begin(9600);
@@ -236,60 +238,44 @@ void loop() {
 
   unsigned char c;
   //if host device wants to send a command:
-  if( (digitalRead(SIZIF_KEYBOARD_CLOCK_PIN)==LOW) || (digitalRead(SIZIF_KEYBOARD_DATA_PIN) == LOW)) {
+  if((digitalRead(SIZIF_KEYBOARD_CLOCK_PIN)==LOW) || (digitalRead(SIZIF_KEYBOARD_DATA_PIN) == LOW)) {
     while(keyboard.read(&c)) ;
     keyboardcommand(c);
   }
-  else{ 
+  else { 
     //send keypresses accordingly using scancodes
-
     if (PS2keyboard.available()) {
       PS2_d = PS2keyboard.read();
 
-      // PS2_d & 0xFF - Code
+      // PS2_d & 0xFF - ASCII Code
       // c >> 8 - Status bits
-      keyboard.write(PS2_d & 0xFF); 
+      SendString(String(char(PS2_d & 0xFF))); 
       delay(20);
     }
 
-  }
+      // read Gamepads data
+      int pult_1_keys = get_keys_state_joystick(pult_1);
+      int pult_2_keys = get_keys_state_joystick(pult_2);
 
-
-
-  // Just print something
-  //keyboard.write(0x0D); //send another Tab
-  //keyboard.write(0xF0);  //tab break
-  //keyboard.write(0x0D);  //...
-
-  // Test and print Gamepads
-  /*
-  int pult_1_keys = get_keys_state_joystick(pult_1);
-  int pult_2_keys = get_keys_state_joystick(pult_2);
-  
-  for (int i = 0; i < 8; i++) {
-      if (!(pult_1_keys & (1 << i))) {
-        keyboard.write(keys_pult_1_c[i]);
-        delay(20);
-      } else {
-        keyboard.write(0xF0);
-        delay(20);
-        keyboard.write(keys_pult_1_c[i]);
-        delay(20);
+      for (int i = 0; i < 8; i++) {
+          if (!(pult_1_keys & (1 << i))) {
+            keyboard.write(keys_pult_1_c[i]);
+            delay(20);
+            keyboard.write(0xF0);
+            delay(20);
+            keyboard.write(keys_pult_1_c[i]);
+            delay(20);
+          }
+          if (!(pult_2_keys & (1 << i))) {
+            keyboard.write(keys_pult_2_c[i]);
+            delay(20);
+            keyboard.write(0xF0);
+            delay(20);
+            keyboard.write(keys_pult_2_c[i]);
+            delay(20);
+          }
       }
+
   }
-
-
-  for (int i = 0; i < 8; i++) {
-      if (!(pult_2_keys & (1 << i))) {
-        keyboard.write(keys_pult_2_c[i]);
-        delay(20);
-      } else {
-        keyboard.write(0xF0);
-        delay(20);
-        keyboard.write(keys_pult_2_c[i]);
-        delay(20);
-      }
-    }
-  */
 
 }
