@@ -4,22 +4,24 @@
     File........... NES gamepads to PS2
     Purpose........ Connect 2 NES gamepads and PS/2 Keyboard to Sizif XXS PS/2
     Author......... Peter A. Ukhov
+    Github......... https://github.com/ukhov79/NES-gamepads-to-PS2
     E-mail......... ukhov79 @ gmail.com
     Started........ 11/19/2023
     Finished....... not yet (waiting for all components to assembly)
-    Updated........ --/--/----
+    Updated........ 12/12/2023
 
 ================================================================================
    Notes
 ================================================================================
 
-Now just keyboard repetier.
-It doesn't work yet!
+    Clock pins for PS/2 and SizifXXS should be irq pins.
+    Now just keyboard repetier.
+    !!!!! Not working yet !!!
 
 */
 
 //===============================================================================
-//  Connactions
+//  Connections
 //===============================================================================
 
 // Gamepads pins
@@ -40,6 +42,9 @@ It doesn't work yet!
 
 // Time countdown for delay in polling cycles of gamepads
 #define TICK 2
+
+// var to read PS/2 kodes
+uint16_t PS2_d;
 
 //===============================================================================
 //  Gamepads cpp
@@ -103,17 +108,17 @@ byte keys_pult_2_c[] = {0x70, 0x43, 0x29, 0x5A, 0x75, 0x72, 0x6B, 0x74};
 //===============================================================================
 //  libraries:
 //  To Read keys from PS/2 keyboard 
-//  https://github.com/PaulStoffregen/PS2Keyboard
+//  https://github.com/techpaul/PS2KeyAdvanced
 //  To Emulate PS/2 Keyboard
 //  https://github.com/Harvie/ps2dev
 //===============================================================================
 
 #include <EEPROM.h>
-#include <PS2Keyboard.h>    // Read a PS/2 keyboard
-#include <ps2dev.h>         // Emulate a PS/2 device
+#include <PS2KeyAdvanced.h>
+#include <ps2dev.h>
 
-PS2Keyboard readkeyboard;
 PS2dev keyboard(SIZIF_KEYBOARD_CLOCK_PIN, SIZIF_KEYBOARD_DATA_PIN);
+PS2KeyAdvanced PS2keyboard;
 
 //===============================================================================
 //  Keyboard emulator keys - emul.cpp
@@ -212,15 +217,15 @@ void setup() {
   delay(10);
 
   // init for PS/2 keyboard
-  readkeyboard.begin(PS2_KEYBOARD_DATA_PIN, PS2_KEYBOARD_CLOCK_PIN, PS2Keymap_US);
+  PS2keyboard.begin(PS2_KEYBOARD_DATA_PIN, PS2_KEYBOARD_CLOCK_PIN);
   delay(10);
 
-  // to test PS/2 Keyboard
-  // Serial.begin(9600);
-  // Keyboard.begin();
-
   // init_joystick(pult_1);
-  // init_joystick(pult_2); 
+  // init_joystick(pult_2);
+
+  // To write debug info
+  Serial.begin(9600);
+
 }
 
 //===============================================================================
@@ -238,9 +243,13 @@ void loop() {
   else{ 
     //send keypresses accordingly using scancodes
 
-    if (readkeyboard.available()) {
-      char key = readkeyboard.read();
-      SendString(String(key));
+    if (PS2keyboard.available()) {
+      PS2_d = PS2keyboard.read();
+
+      // PS2_d & 0xFF - Code
+      // c >> 8 - Status bits
+      keyboard.write(PS2_d & 0xFF); 
+      delay(20);
     }
 
   }

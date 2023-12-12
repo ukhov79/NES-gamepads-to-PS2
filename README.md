@@ -100,5 +100,5 @@ A capacitor with a larger capacity is installed on the second board and there wa
 - NES Controller Interface with an Arduino UNO - Projects [`Page`](https://www.allaboutcircuits.com/projects/nes-controller-interface-with-an-arduino-uno/)
 - Arduino ps2dev library [`code`](https://github.com/Harvie/ps2dev)
 - nes_gamepad_adapter [`code`](https://github.com/Kokorev92/nes_gamepad_adapter/tree/master)
-- PS/2 Arduino Keyboard [`code`](https://github.com/freedelity/ps2-keyboard)
+- PS/2 Arduino Keyboard [`code`](https://github.com/techpaul/PS2KeyAdvanced)
 - How To Save Values On Arduino With EEPROM [`Page`](https://roboticsbackend.com/how-to-save-values-on-arduino-with-eeprom/)

@@ -132,7 +132,7 @@
 /* Keyboard constants  Change to suit your Arduino
    define pins used for data and clock from keyboard */
 #define DATAPIN 4
-#define IRQPIN  3
+#define IRQPIN  2
 
 uint16_t c;
 
@@ -143,7 +143,7 @@ void setup( )
 {
 // Configure the keyboard library
 keyboard.begin( DATAPIN, IRQPIN );
-Serial.begin( 115200 );
+Serial.begin( 9600 );
 Serial.println( "PS2 Advanced Key Simple Test:" );
 }
 
