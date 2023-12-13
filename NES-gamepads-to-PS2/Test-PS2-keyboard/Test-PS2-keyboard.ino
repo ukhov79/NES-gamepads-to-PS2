@@ -21,9 +21,10 @@ Serial.println( "PS2 Advanced Key Simple Test:" );
 
 void loop( )
 {
-if( keyboard.available( ) )
+if( keyboard.available() )
   {
   // read the next key
+  
   c = keyboard.read( );
   if( c > 0 )
     {

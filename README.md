@@ -74,6 +74,18 @@ During debugging, this bug appeared on one SizifXXS board:
 The issue is most likely caused by an unstable power supply.
 A capacitor with a larger capacity is installed on the second board and there was no problem.
 
+## MVP demo
+You can already play!
+
+But there are still bugs with repeated keystrokes.
+There is no handling of simultaneous pressing of several keys.
+Needs improvement.
+An example for a simple game where the Gamepad already works well ;)
+
+Game: [`Earth Shaker`](https://viva-games.ru/game/earth-shaker)
+
+<img src="images/Power-bug1.gif" alt="Gif bug" width="300"/>
+
 ## TODO list
 - [X] Create TODO list
 - [X] 3D Case model for Sizif XXS
@@ -84,9 +96,12 @@ A capacitor with a larger capacity is installed on the second board and there wa
 - [X] Final Rebuild Case model for Sizif XXS and all components
 - [X] Assemble the device
 - [X] Write about power bug
-- [ ] Code and test Keyboard repiter
-- [ ] Code MVP with hardcoded keys
-- [ ] Test for two NES Gamepads
+- [X] Code and test Keyboard repiter
+- [X] Code MVP with hardcoded keys
+- [X] Test for two NES Gamepads
+- [ ] Rewrite libraries and source code to eliminate key-repeat bugs
+- [ ] Add NES class with buffer
+- [ ] Add good key handling for NES Joystick (simultaneous pressing)
 - [ ] Add Configuration using NumLock key and EEPROM
 - [ ] Create Video Guide
 - [ ] Enjoy local multiplayer Games on Sizif XXS

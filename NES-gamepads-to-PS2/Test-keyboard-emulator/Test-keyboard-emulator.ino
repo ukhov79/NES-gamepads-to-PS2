@@ -106,11 +106,26 @@ void loop() {
   else{ //send keypresses accordingly using scancodes
   // secancodes: http://www.computer-engineering.org/ps2keyboard/scancodes2.html
   
-  delay(10000);
+  delay(5000);
   if (todel==1)
     {
-    SendString("J 'Just test keyboard emulator!'      40"); 
-    todel=1;
-    } // wait 10 second
+    SendString("J 'Just test keyboard emulator!'1234567890"); 
+    todel=0;
+
+    // send F5 to load NMI
+    keyboard.write(0x03);
+    delay(20);
+    keyboard.write(0xF0);
+    delay(20);
+    keyboard.write(0x03);
+    delay(20);
+    keyboard.write(0x03);
+    delay(20);
+    keyboard.write(0xF0);
+    delay(20);
+    keyboard.write(0x03);
+
+
+    }
   }
 }
