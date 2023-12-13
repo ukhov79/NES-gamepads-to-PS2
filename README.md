@@ -80,11 +80,12 @@ You can already play!
 But there are still bugs with repeated keystrokes.
 There is no handling of simultaneous pressing of several keys.
 Needs improvement.
+
 An example for a simple game where the Gamepad already works well ;)
 
 Game: [`Earth Shaker`](https://viva-games.ru/game/earth-shaker)
 
-<img src="images/Power-bug1.gif" alt="Gif bug" width="300"/>
+<img src="images/MVP-demo.gif" alt="Gif bug" width="300"/>
 
 ## TODO list
 - [X] Create TODO list
