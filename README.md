@@ -100,12 +100,13 @@ Game: [`Earth Shaker`](https://viva-games.ru/game/earth-shaker)
 - [X] Code and test Keyboard repiter
 - [X] Code MVP with hardcoded keys
 - [X] Test for two NES Gamepads
-- [ ] Rewrite libraries and source code to eliminate key-repeat bugs
+- [X] Rewrite source code to eliminate key-repeat bugs
 - [ ] Add NES class with buffer
-- [ ] Add good key handling for NES Joystick (simultaneous pressing)
+- [ ] Rewrite code for keyboard libs (not optimal, it should be one lib)
+- [X] Add good key handling for NES Joystick (simultaneous pressing)
 - [ ] Add Configuration using NumLock key and EEPROM
 - [ ] Create Video Guide
-- [ ] Enjoy local multiplayer Games on Sizif XXS
+- [X] Enjoy local multiplayer Games on Sizif XXS
 
 ## References
 ### Ideas

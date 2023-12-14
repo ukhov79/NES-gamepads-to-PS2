@@ -4,13 +4,11 @@
 ================================================================================
 
     Clock pins for PS/2 and SizifXXS should be irq pins.
-    !!!!! Working with maby bugs !!!
+    It works now, but the code needs to be reworked!
     TODO: 
     1. Rewrite lib PS2keyAdvanced and ps2dev to repetier
     2. Add classes for NES with buffers and statuses
-
 */
-
 //===============================================================================
 //  Connections
 //===============================================================================
@@ -40,7 +38,7 @@ uint16_t PS2_d;
 #define PS2_REQUIRES_PROGMEM 1
 
 //===============================================================================
-//  Gamepads cpp
+//  Gamepads class
 //===============================================================================
 
 struct pult_cfg {
@@ -95,8 +93,9 @@ int pult_2_keys = 0;
 // The order of shifting for the buttons:
 // 0 - Right, 1 - Left, 2 - Down, 3 - Up, 4 - Start, 5 - Select, 6 - B, 7 - A
 // Codes for keyboard Joystick
+// OPQA Joystick
 byte keys_pult_1_c[] = {0x4D, 0x44, 0x1C, 0x15, 0x5A, 0x29, 0x43, 0x29};
-// Sizif Joystick
+// Sizif Joystick - Numpad
 byte keys_pult_2_c[] = {0x74, 0x6B, 0x72, 0x75, 0x5A, 0x29, 0x43, 0x70,};
 
 // TODO: Read from EEPROM, will be configured, change keycodes
