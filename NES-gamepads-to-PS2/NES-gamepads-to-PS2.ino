@@ -89,9 +89,11 @@ int get_keys_state_joystick(pult_cfg& cfg) {
   return keys_state;
 }
 
+int pult_1_keys = 0;
+int pult_2_keys = 0;
+
 // The order of shifting for the buttons:
 // 0 - Right, 1 - Left, 2 - Down, 3 - Up, 4 - Start, 5 - Select, 6 - B, 7 - A
-
 // Codes for keyboard Joystick
 byte keys_pult_1_c[] = {0x4D, 0x44, 0x1C, 0x15, 0x5A, 0x29, 0x43, 0x29};
 // Sizif Joystick
@@ -192,39 +194,40 @@ const uint16_t key_codes[][4] = {
   { 0x3B,   0x41, 0x00, 0x00 }, { 0x803B, 0xF0, 0x41, 0x00 }, // , COMMA
   { 0x3D,   0x49, 0x00, 0x00 }, { 0x803D, 0xF0, 0x49, 0x00 }, // . PERIOD
   { 0x3E,   0x4a, 0x00, 0x00 }, { 0x803E, 0xF0, 0x4a, 0x00 }, // SLASH
-/*
-			RIGHT_SHIFT = 0x59,
-
-			LEFT_CONTROL = 0x14,
-			LEFT_ALT = 0x11,
-			SPACE = 0x29,
-			NUM_LOCK = 0x77,
-			ASTERISK = 0x7c,
-			NUMPAD_MINUS = 0x7b,
-			NUMPAD_SEVEN = 0x6c,
-			NUMPAD_EIGHT = 0x75,
-			NUMPAD_NINE = 0x7d,
-			PLUS = 0x79,
-			NUMPAD_FOUR = 0x6b,
-			NUMPAD_FIVE = 0x73,
-			NUMPAD_SIX = 0x74,
-			NUMPAD_ONE = 0x69,
-			NUMPAD_TWO = 0x72,
-			NUMPAD_THREE = 0x7a,
-			NUMPAD_ZERO = 0x70,
-			DECIMAL = 0x71
-*/
+  { 0x4107, 0x59, 0x00, 0x00 }, { 0x8107, 0xF0, 0x59, 0x00 }, // RIGHT_SHIFT
+  { 0x2108, 0x14, 0x00, 0x00 }, { 0x8108, 0xF0, 0x14, 0x00 },	// LEFT_CONTROL
+	{ 0x90A,  0x11, 0x00, 0x00 }, { 0x810A, 0xF0, 0x11, 0x00 },	// LEFT_ALT
+	{ 0x101,  0x77, 0xF0, 0x77 }, { 0x8101, 0x77, 0xF0, 0x77 },	// NUM_LOCK on/off
+			// ASTERISK = 0x7c,
+			// NUMPAD_MINUS = 0x7b,
+	{ 0x27,   0x6c, 0x00, 0x00 }, { 0x8027, 0xF0, 0x6c, 0x00 },	// NUMPAD_SEVEN,
+	{ 0x28,   0x75, 0x00, 0x00 }, { 0x8028, 0xF0, 0x75, 0x00 },	// NUMPAD_EIGHT,
+	{ 0x29,   0x7d, 0x00, 0x00 }, { 0x8029, 0xF0, 0x7d, 0x00 },	// NUMPAD_NINE,
+			// PLUS = 0x79,
+	{ 0x24,   0x6b, 0x00, 0x00 }, { 0x8024, 0xF0, 0x6b, 0x00 },	// NUMPAD_FOUR,
+	{ 0x25,   0x73, 0x00, 0x00 }, { 0x8025, 0xF0, 0x73, 0x00 },	// NUMPAD_FIVE,
+	{ 0x26,   0x74, 0x00, 0x00 }, { 0x8026, 0xF0, 0x74, 0x00 },	// NUMPAD_SIX,
+	{ 0x21,   0x69, 0x00, 0x00 }, { 0x8021, 0xF0, 0x69, 0x00 },	// NUMPAD_ONE,
+	{ 0x22,   0x72, 0x00, 0x00 }, { 0x8022, 0xF0, 0x72, 0x00 },	// NUMPAD_TWO,
+	{ 0x23,   0x73, 0x00, 0x00 }, { 0x8023, 0xF0, 0x73, 0x00 },	// NUMPAD_THREE,
+	{ 0x20,   0x70, 0x00, 0x00 }, { 0x8020, 0xF0, 0x70, 0x00 },	// NUMPAD_ZERO,
+			// DECIMAL = 0x71
   { 0x11F,  0x29, 0x00, 0x00 }, { 0x811F, 0xF0, 0x29, 0x00 }}; // Space
 
 const int Key_count = sizeof(key_codes)/sizeof(uint16_t)/4;
 
 void Sendcode(uint16_t scode) {
 
+int send_state = -1;
+
   for(int i = 0; i < Key_count; i++) {
     if(key_codes[i][0] == scode) {
-      keyboard.write(key_codes[i][1]); delay(20);
-      if (key_codes[i][2] != 0x00) {keyboard.write(key_codes[i][2]); delay(20);}
-      if (key_codes[i][3] != 0x00) {keyboard.write(key_codes[i][3]); delay(20);}
+      do {
+        send_state = keyboard.write(key_codes[i][1]);
+        if (key_codes[i][2] != 0x00) send_state += keyboard.write(key_codes[i][2]);
+        if (key_codes[i][3] != 0x00) send_state += keyboard.write(key_codes[i][3]);
+      }
+       while (send_state < 0);
     }
   }
 
@@ -327,33 +330,49 @@ void loop() {
     //send keypresses accordingly using scancodes
     if (PS2keyboard.available()) {
       Sendcode(PS2keyboard.read());
-
       // PS2_d & 0xFF - ASCII Code
       // c >> 8 - Status bits
     }
 
       // read Gamepads data
-      int pult_1_keys = get_keys_state_joystick(pult_1);
-      int pult_2_keys = get_keys_state_joystick(pult_2);
+      int pult_1_keys2 = get_keys_state_joystick(pult_1);
+      int pult_2_keys2 = get_keys_state_joystick(pult_2);
 
       for (int i = 0; i < 8; i++) {
-          if (!(pult_1_keys & (1 << i))) {
-            keyboard.write(keys_pult_1_c[i]);
-            delay(20);
-            keyboard.write(0xF0);
-            delay(20);
-            keyboard.write(keys_pult_1_c[i]);
-            delay(20);
+
+        if( (pult_1_keys & (1 << i)) != (pult_1_keys2 & (1 << i)) ){
+          if (!(pult_1_keys2 & (1 << i))) {
+            int send_state = -1;
+            do send_state = keyboard.write(keys_pult_1_c[i]);
+            while(send_state < 0);
+          } else {
+            int send_state = -1;
+            do {
+              send_state = keyboard.write(0xF0);
+              send_state += keyboard.write(keys_pult_1_c[i]);
+            }
+            while(send_state < 0);
           }
-          if (!(pult_2_keys & (1 << i))) {
-            keyboard.write(keys_pult_2_c[i]);
-            delay(20);
-            keyboard.write(0xF0);
-            delay(20);
-            keyboard.write(keys_pult_2_c[i]);
-            delay(20);
+        }
+
+        if( (pult_2_keys & (1 << i)) != (pult_2_keys2 & (1 << i)) ) {
+          if (!(pult_2_keys2 & (1 << i))) {
+            int send_state = -1;
+            do send_state = keyboard.write(keys_pult_2_c[i]);
+            while(send_state < 0);
+          } else {
+            int send_state = -1;
+            do {
+              send_state = keyboard.write(0xF0);
+              send_state += keyboard.write(keys_pult_2_c[i]);
+            }
+            while(send_state < 0);
           }
+        }
       }
+
+      pult_1_keys = pult_1_keys2;
+      pult_2_keys = pult_2_keys2;
 
   }
 
