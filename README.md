@@ -77,9 +77,9 @@ A capacitor with a larger capacity is installed on the second board and there wa
 ## MVP demo
 You can already play!
 
-But there are still bugs with repeated keystrokes.
-There is no handling of simultaneous pressing of several keys.
-Needs improvement.
+Now it works correct for my games, like [`Seraphima`](https://zxart.ee/eng/software/game/arcade/adventure/seraphima/),
+[`The Sword of IANNA`](https://spectrumcomputing.co.uk/entry/30447/ZX-Spectrum/The_Sword_of_IANNA)
+and many others...
 
 An example for a simple game where the Gamepad already works well ;)
 
