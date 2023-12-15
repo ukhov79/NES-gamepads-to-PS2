@@ -96,7 +96,7 @@ int pult_2_keys = 0;
 // OPQA Joystick
 byte keys_pult_1_c[] = {0x4D, 0x44, 0x1C, 0x15, 0x5A, 0x29, 0x43, 0x29};
 // Sizif Joystick - Numpad
-byte keys_pult_2_c[] = {0x74, 0x6B, 0x72, 0x75, 0x5A, 0x29, 0x43, 0x70,};
+byte keys_pult_2_c[] = {0x74, 0x6B, 0x72, 0x75, 0x5A, 0x29, 0x43, 0x70};
 
 // TODO: Read from EEPROM, will be configured, change keycodes
 
@@ -354,7 +354,7 @@ void loop() {
           }
         }
 
-        if( (pult_2_keys & (1 << i)) != (pult_2_keys2 & (1 << i)) ) {
+        if( (pult_2_keys & (1 << i)) != (pult_2_keys2 & (1 << i)) ){
           if (!(pult_2_keys2 & (1 << i))) {
             int send_state = -1;
             do send_state = keyboard.write(keys_pult_2_c[i]);
