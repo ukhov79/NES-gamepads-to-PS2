@@ -21,7 +21,6 @@ The following purchased components will be needed to assemble the device:
 - Screw M2.5x6mm - 13 pcs ([`Image1`](/images/M2_5x6mm.png))
 
 For 3D modeling, I used SolidWorks. All models can be found in the 3D models directory.\
-After assembling and testing the device I will complete the stl files for printing.\
 To print parts from PLA plastic, you will need an FDM 3D printer. All models are optimized for 0.4mm nozzle and 0.2mm layer thickness.
 
 Case for Sizif XXS RevB looks like here:\
@@ -77,10 +76,11 @@ A capacitor with a larger capacity is installed on the second board and there wa
 ## MVP demo
 You can already play!
 
+<img src="images/MVP-final.jpg" alt="MVP final view" width="300"/>
+
 Now it works correct for my games, like [`Seraphima`](https://zxart.ee/eng/software/game/arcade/adventure/seraphima/),
 [`The Sword of IANNA`](https://spectrumcomputing.co.uk/entry/30447/ZX-Spectrum/The_Sword_of_IANNA)
 and many others...
-
 For two players it works good for [`Target Renegade`](https://spectrumcomputing.co.uk/entry/4087/ZX-Spectrum/Target_Renegade).
 
 An example for a simple game where the Gamepad already works well ;)
