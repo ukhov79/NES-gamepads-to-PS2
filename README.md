@@ -81,6 +81,8 @@ Now it works correct for my games, like [`Seraphima`](https://zxart.ee/eng/softw
 [`The Sword of IANNA`](https://spectrumcomputing.co.uk/entry/30447/ZX-Spectrum/The_Sword_of_IANNA)
 and many others...
 
+For two players it works good for [`Target Renegade`](https://spectrumcomputing.co.uk/entry/4087/ZX-Spectrum/Target_Renegade).
+
 An example for a simple game where the Gamepad already works well ;)
 
 Game: [`Earth Shaker`](https://viva-games.ru/game/earth-shaker)
@@ -100,7 +102,7 @@ Game: [`Earth Shaker`](https://viva-games.ru/game/earth-shaker)
 - [X] Code and test Keyboard repiter
 - [X] Code MVP with hardcoded keys
 - [X] Test for two NES Gamepads
-- [X] Rewrite source code to eliminate key-repeat bugs
+- [ ] Rewrite source code to eliminate key-repeat bugs (rare, but annoying)
 - [ ] Add NES class with buffer
 - [ ] Rewrite code for keyboard libs (not optimal, it should be one lib)
 - [X] Add good key handling for NES Joystick (simultaneous pressing)
